@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    position: relative;
+}
+body{
+    font-family: "Helvetica Neue","微软雅黑",sans-serif;
+    font-size: 15px;
+    font-weight:100;
+
+}
+@font-face{
+    font-family:"ziti";
+    src:url("../fonts/iconfont.woff")
+    format("woff")
+}
+.icon{
+    font-family: "ziti";
+    font-style: normal;
+
+}
+.icon:hover{
+    color: red;
+}
+.icono{
+    font-family: "ziti";
+    font-style: normal;
+
+}
+.icono:hover{
+    color: #40ff0c;
+}
+.icon-zuiqiangwangzhe::before {
+    content: "\e646";
+}
+.icon-jishuqiangying::before {
+    content: "\e63f";
+}
+.icon-qiangriguang::before {
+    content: "\e610";
+}
+.icon-qiangdang01::before {
+    content: "\e600"; }
+.icon-severeSandStorm::before { content: "\e622";
+}
+.icon-qiangliexuanzhuan::before {
+    content: "\e60b";
+}
+@font-face{
+    font-family:"wenzi";
+    src:url("../fonts/myriad-set-pro_thin.woff")
+    format("woff")
+}
+.iconc{
+    font-family: "wenzi";
+    font-style: normal;
+}
+@font-face{
+    font-family:"apple";
+    src:url("../fonts/iconfont.svg")
+    format("svg")
+
+}
+.icond{
+    font-family: "apple";
+    font-style: normal;
+}
+@mixin zhong{
+    position: absolute;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+$number:12;
+$l-padding:3000px;
+$m-padding:960px;
+$s-padding:650px;
+$list:(
+        'l':$l-padding,
+        'm':$m-padding,
+        's':$s-padding,
+);
+
+.row::after{
+    content: "";
+    display: block;
+    clear: both;
+    line-height: 0;
+    height: 0;
+
+}
+.row{
+    position: relative;
+    .col{
+        float: left;
+    }
+
+
+}
+@each $k in map_keys($list){
+    @media screen and (max-width:map-get($list,$k)){
+        @for $i from 1 through $number{
+            .col.#{$k}#{$i}{
+                width:percentage($i/$number);
+            }
+        }
+    }
+}
